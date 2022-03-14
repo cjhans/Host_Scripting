@@ -1,0 +1,3 @@
+mkdir C:\MarketingExports
+Export-VM -Name Marketing2 -Path C:\MarketingExports
+Import-VM -Path 'C:\MarketingExport\Marketing\Virtual Machines\CFBB0391-716B-470D-8DB8-E44748F9B201.vmcx' -Copy -GenerateNewID -VirtualMachinePath C:\MarketingVM\TheSecondOne -VhdDestinationPath 'C:\MarketingVM\TheSecondOne\virtual hard disks'
