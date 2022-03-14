@@ -1,0 +1,1 @@
+Import-Csv C:\scripts\ADuserlist.csv | ForEach-Object {New-ADUser -Name $_.fname -GivenName $_.fname -Surname $_.lname -EmailAddress $_.email -Department $_.department -AccountPassword ('Sc00bySn@cks' | ConvertTo-SecureString -AsPlainText -Force) -Enabled $true -Path "ou=BulkLab,$root"} 
