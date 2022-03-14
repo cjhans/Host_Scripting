@@ -1,0 +1,21 @@
+##Create a foreach loop that prompts the user for an ammount of test scores
+##Then average the test scores
+[int]$numOfGrades = read-host “How many grades would you like to enter?”
+$numOfGradesArr = 1..$numOfGrades
+foreach ($element in $numOfGradesArr) {
+    [double]$sum += Read-Host “What are the scores?”
+}
+$average=$sum/$numOfGrades
+Write-Host -Fore green “Your average score is $average”
+Clear-Variable sum
+
+##Do the same thing as above, using a while loop
+[int]$numOfGrades = read-host "How many grades would you like to enter?"
+while ($reportcard -lt $numOfGrades) {
+    $reportcard++
+    [int]$sum += Read-Host "What are the scores?"
+}
+$average = $sum/$numOfGrades
+Write-Host -Fore green "Your average score is $average"
+Clear-Variable sum
+Clear-Variable reportcard
