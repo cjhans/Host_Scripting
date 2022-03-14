@@ -1,0 +1,21 @@
+##add three users, each with their own perameters
+new-ADuser -name jjohnny -AccountPassword ('Panther$' | ConvertTo-SecureString -AsPlainText -Force) -GivenName Johnny -Surname Test -EmailAddress johnny@contoso.com
+new-ADuser -name jbravo -AccountPassword ('Panther$' | ConvertTo-SecureString -AsPlainText -Force) -GivenName Johnny -Surname Bravo -EmailAddress bravo@contoso.com
+new-ADuser -name jquest -AccountPassword ('Panther$' | ConvertTo-SecureString -AsPlainText -Force) -GivenName Johnny -Surname Quest -EmailAddress jquest@contoco.com
+
+##edit user's perameters after creation
+Set-Aduser jjohnny -AccountExpirationDate 1/1/2015
+Get-ADUser jjohnny -Properties * 
+
+##enable jhonny bravo's account and show his information on screen
+Enable-ADAccount jbravo
+Get-ADUser jbravo 
+ 
+##change Jhonny Bravo's password using the 'convert to securestring' command
+Set-ADAccountPassword jbravo -NewPassword ('Panther#' | ConvertTo-SecureString -AsPlainText -Force) 
+Get-ADUser jjohnny -properties PasswordLastSet 
+ 
+##remove Jhonny Bravo from active directory
+Remove-ADUser jbravo
+Get-ADUser jbravo 
+ 
