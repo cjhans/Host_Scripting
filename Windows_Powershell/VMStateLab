@@ -1,0 +1,20 @@
+##Create a Virtual Machine called 'Marketing'
+Start-VM -Name Marketing
+Save-VM -Name Marketing
+##Stop-VM Marketing -TurnOff
+
+##create a funciton that checks the state of the VM
+function checkVM {
+    param(
+        [string]$VMName
+    )
+    $NameofVM= Get-VM -Name $VMName
+    if ($NameofVM.State -eq 'Running') {
+        Write-Host $VMName 'is running just fine!'
+    }
+    else {
+        Write-Host $VMName 'is off. But I will turn it on for you now.'
+        Start-VM -Name $VMName
+    }
+      
+}
