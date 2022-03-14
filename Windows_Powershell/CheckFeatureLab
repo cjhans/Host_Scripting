@@ -1,0 +1,15 @@
+##Create a function that checks if a windows feature is installed
+##If it us not, have the program install it
+function checkfeature {
+    param($feature)
+    $NameofFeature= Get-WindowsFeature -Name $feature
+    if($NameofFeature.InstallState -eq 'Installed'){
+    write-host 'This feature is already installed, no need to worry!'
+    }
+    else{
+    write-host 'This feature is not installed. I will install it shortly.'
+    Add-WindowsFeature $feature
+    Add-WindowsFeature $feature | out-file -append $env:USERPROFILE\Desktop\feature.log
+    Get-WindowsFeature $feature
+    }
+} 
